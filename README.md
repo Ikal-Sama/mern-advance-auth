@@ -1,7 +1,7 @@
-MERN Authentication Application
+##MERN Authentication Application
 This project is a robust, full-stack authentication system built with the MERN (MongoDB, Express.js, React, Node.js) stack. It provides a complete user management solution with modern security features.
 
-Key Features
+###Key Features
 User Registration & Login: Allows new users to create an account and existing users to sign in.
 
 Token-Based Authentication: Uses JSON Web Tokens (JWTs) for secure, stateless user sessions.
@@ -10,9 +10,9 @@ Email Verification: New users are required to verify their email address with a 
 
 Password Reset Flow: Includes a secure "Forgot Password" feature that sends a reset link to the user's email.
 
-Status and Development Notes
+###Status and Development Notes
 This application is currently in active development.
 
-Important Note on Email Functionality:
+###Important Note on Email Functionality:
 
 For a professional and scalable solution, this application will eventually integrate with a live email service like SendGrid or Mailgun after acquiring a custom domain. Currently, due to the use of a development-only email sandbox, the application can only send emails to the developer's account, and not to any other email addresses.
