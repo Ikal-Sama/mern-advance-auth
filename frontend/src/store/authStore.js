@@ -1,7 +1,10 @@
 import { create } from "zustand";
 import axios from "axios";
 
-const API_URL = `${import.meta.env.VITE_API_URL}/api`;
+const API_URL =
+  import.meta.emv.MODE === "development"
+    ? `${import.meta.env.VITE_API_URL}/api`
+    : "/api";
 
 axios.defaults.withCredentials = true;
 
@@ -12,53 +15,6 @@ export const useAuthStore = create((set) => ({
   isLoading: false,
   isCheckingAuth: true,
   message: null,
-
-  updateName: async (name) => {
-    set({ isLoading: true, error: null });
-    try {
-      const response = await axios.put(`${API_URL}/user/name`, { name });
-      set({ user: response.data.user, isLoading: false, error: null });
-    } catch (error) {
-      set({
-        error: error.response?.data?.message || "Error updating name",
-        isLoading: false,
-      });
-      throw error;
-    }
-  },
-
-  updatePassword: async (password) => {
-    set({ isLoading: true, error: null });
-    try {
-      const response = await axios.put(`${API_URL}/user/password`, {
-        password,
-      });
-      set({ user: response.data.user, isLoading: false, error: null });
-    } catch (error) {
-      set({
-        error: error.response?.data?.message || "Error updating password",
-        isLoading: false,
-      });
-      throw error;
-    }
-  },
-
-  updateProfile: async (name, password) => {
-    set({ isLoading: true, error: null });
-    try {
-      const response = await axios.put(`${API_URL}/user/profile`, {
-        name,
-        password: password || undefined,
-      });
-      set({ user: response.data.user, isLoading: false, error: null });
-    } catch (error) {
-      set({
-        error: error.response?.data?.message || "Error updating profile",
-        isLoading: false,
-      });
-      throw error;
-    }
-  },
 
   signup: async (email, password, name) => {
     set({ isLoading: true, error: null });
